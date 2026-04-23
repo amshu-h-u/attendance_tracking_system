@@ -5,6 +5,7 @@ export default function StudentsDashboard() {
   const [batches, setBatches] = useState([]);
   const [error, setError] = useState("");
 
+  
   const fetchBatches = async () => {
     try {
       const token = localStorage.getItem("token");
@@ -15,8 +16,7 @@ export default function StudentsDashboard() {
         },
       });
 
-      console.log("BATCHES:", res.data); // ✅ debug
-
+      console.log("BATCHES:", res.data); 
       setBatches(res.data);
     } catch (err) {
       console.error(err);
@@ -35,7 +35,7 @@ export default function StudentsDashboard() {
       });
 
       alert("Joined successfully ");
-      fetchBatches(); // refresh after join
+      fetchBatches(); 
     } catch (err) {
       console.error(err);
       alert("Failed to join ");
@@ -47,6 +47,7 @@ export default function StudentsDashboard() {
   }, []);
 
   return (
+
     <div>
       <h2>Student Dashboard</h2>
 
@@ -73,6 +74,8 @@ export default function StudentsDashboard() {
           </button>
         </div>
       ))}
+
     </div>
+
   );
 }

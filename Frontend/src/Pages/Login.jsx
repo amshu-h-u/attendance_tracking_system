@@ -3,7 +3,6 @@ import API from "../api/axios.js";
 
 export default function Login() {
   const [isSignup, setIsSignup] = useState(false);
-
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

@@ -1,5 +1,3 @@
-
-
 import { useEffect, useState } from "react";
 import API from "../api/axios";
 
@@ -11,6 +9,7 @@ export default function TrainerDashboard() {
   const token = localStorage.getItem("token");
 
 
+
   const fetchBatches = async () => {
     try {
       const res = await API.get("/batches", {
@@ -19,8 +18,11 @@ export default function TrainerDashboard() {
         },
       });
 
+
       setBatches(res.data);
-    } catch (err) {
+    } 
+    
+    catch (err) {
       console.error(err);
       setError("Failed to load batches");
     }
@@ -72,9 +74,7 @@ export default function TrainerDashboard() {
       </div>
 
       {error && <p style={{ color: "red" }}>{error}</p>}
-
       {batches.length === 0 && !error && <p>No batches found</p>}
-
       {batches.map((b) => (
         <div
           key={b._id}
