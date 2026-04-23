@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
-
 const Attendance = require("../models/Attendance");
 const { auth, checkRole } = require("../middleware/authMiddleware");
+
 
 
 router.post("/attendance", auth, checkRole("Trainer"), async (req, res) => {
@@ -29,7 +29,6 @@ router.post("/attendance", auth, checkRole("Trainer"), async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 });
-
 
 
 router.get("/attendance/:batchId", auth, async (req, res) => {
@@ -60,6 +59,7 @@ router.get("/attendance/:batchId", auth, async (req, res) => {
 });
 
 
+
 router.get("/attendance/:batchId/percentage", auth, async (req, res) => {
   try {
     const { batchId } = req.params;
@@ -79,8 +79,8 @@ router.get("/attendance/:batchId/percentage", auth, async (req, res) => {
       }
     });
 
-    const percentage =
-      totalDays === 0 ? 0 : ((presentDays / totalDays) * 100).toFixed(2);
+
+    const percentage =totalDays === 0 ? 0 : ((presentDays / totalDays) * 100).toFixed(2);
 
     res.json({
       totalDays,
